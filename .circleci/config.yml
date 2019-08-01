@@ -18,6 +18,15 @@ jobs:
           name: Run Lint Suite
           command: |
             ./lint-shell-scripts.sh
+  test-python:
+    docker:
+      - image: circleci/python:3.6
+    steps:
+      - checkout
+      - run:
+          name: Unit Test Python
+          command: |
+            git ls-files | grep -E '^tests/.*\.py$' | xargs python3 -m unittest
 
   release:
     <<: *defaults
@@ -31,10 +40,12 @@ workflows:
     # Run the test jobs first, then the release only when all the test jobs are successful
     jobs:
       - lint
+      - test-python
       - release:
           context: reaction-publish-semantic-release
           requires:
             - lint
+            - test-python
           filters:
             branches:
               only: trunk
