@@ -27,6 +27,9 @@
   ],
   "license": "Apache-2.0",
   "name": "@reactioncommerce/ci-scripts",
+  "publishConfig": {
+    "access": "public"
+  },
   "release": {
     "branch": "trunk"
   },
