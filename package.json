@@ -1,0 +1,38 @@
+{
+  "author": "Peter Lyons <pete@reactioncommerce.com> (https://www.reactioncommerce.com)",
+  "bin": {
+    "docker-tags": "./docker-tags.sh",
+    "install-aws-cli": "./install-aws-cli.sh",
+    "install-helm": "./install-helm.sh",
+    "install-kubectl": "./install-kubectl.sh",
+    "install-sops": "./install-sops.sh",
+    "lint-dockerfiles": "./lint-dockerfiles.sh",
+    "lint-javascript": "./lint-javascript.sh",
+    "lint-shell-scripts": "./lint-shell-scripts.sh"
+  },
+  "bugs": {
+    "url": "https://github.com/reactioncommerce/ci-scripts/issues"
+  },
+  "description": "Scripts supporting our Continuous Integration (CI)",
+  "devDependencies": {
+  },
+  "homepage": "https://github.com/reactioncommerce/ci-scripts#readme",
+  "keywords": [
+    "continuous",
+    "integration",
+    "ci",
+    "utilities",
+    "util",
+    "scripts"
+  ],
+  "license": "Apache-2.0",
+  "name": "@reactioncommerce/ci-scripts",
+  "release": {
+    "branch": "trunk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/reactioncommerce/ci-scripts.git"
+  },
+  "version": "0.0.0-development"
+}

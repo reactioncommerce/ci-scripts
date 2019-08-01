@@ -1,0 +1,39 @@
+version: 2.1
+
+# The following stanza defines a map named defaults with a variable that may be
+# inserted using the YAML merge (<<: *) key later in the file to save some
+# typing. See http://yaml.org/type/merge.html for details.
+defaults: &defaults
+  docker:
+    - image: circleci/node:12
+
+jobs:
+  lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Run Lint Suite
+          command: |
+            ./lint-shell-scripts.sh
+
+  release:
+    steps:
+      - checkout
+      - run: npx --quiet semantic-release
+
+workflows:
+  version: 2
+  main:
+    # Run the test jobs first, then the release only when all the test jobs are successful
+    jobs:
+      - lint
+      - release:
+          context: reaction-publish-semantic-release
+          requires:
+            - lint
+          filters:
+            branches:
+              only: trunk
