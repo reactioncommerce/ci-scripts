@@ -20,6 +20,7 @@ jobs:
             ./lint-shell-scripts.sh
 
   release:
+    <<: *defaults
     steps:
       - checkout
       - run: npx --quiet semantic-release
