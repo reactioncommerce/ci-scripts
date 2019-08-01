@@ -2,7 +2,6 @@
   "author": "Peter Lyons <pete@reactioncommerce.com> (https://www.reactioncommerce.com)",
   "bin": {
     "docker-tags": "./docker-tags.sh",
-    "install-aws-cli": "./install-aws-cli.sh",
     "install-helm": "./install-helm.sh",
     "install-kubectl": "./install-kubectl.sh",
     "install-sops": "./install-sops.sh",
