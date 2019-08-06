@@ -13,7 +13,6 @@ set -o posix    # more strict failures in subshells
 IFS="$(printf "\n\t")"
 # ---- End unofficial bash strict mode boilerplate
 
-cd "$(dirname "${BASH_SOURCE[0]}")/.."
 git ls-files | grep -E '(^|/)package\.json$' | {
   while IFS= read -r file_path; do
     dir=$(dirname "${file_path}")
