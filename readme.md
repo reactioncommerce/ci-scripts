@@ -19,8 +19,8 @@ jobs:
           name: Run Lint Suite
           command: |
             # pin the current latest version explicitly
-            # 1.0.1 for example only
-            npm install @reactioncommerce/ci-scripts@1.0.1
+            # 1.2.0 for example only
+            npm install --no-progress --no-package-lock @reactioncommerce/ci-scripts@1.2.0 >/dev/null
             "$(npm bin)/lint-shell-scripts
 ```
 
