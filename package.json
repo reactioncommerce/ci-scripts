@@ -8,7 +8,8 @@
     "install-sops": "./install-sops.sh",
     "lint-dockerfiles": "./lint-dockerfiles.sh",
     "lint-javascript": "./lint-javascript.sh",
-    "lint-shell-scripts": "./lint-shell-scripts.sh"
+    "lint-shell-scripts": "./lint-shell-scripts.sh",
+    "npm-audit": "./npm-audit.sh"
   },
   "bugs": {
     "url": "https://github.com/reactioncommerce/ci-scripts/issues"
