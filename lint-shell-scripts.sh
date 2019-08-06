@@ -20,7 +20,7 @@ git ls-files | grep -E '(\bbin/|\.sh$)' | {
     #   continue
     # fi
     echo -n "shellcheck ${file_path}"
-    docker run --rm --interactive koalaman/shellcheck:v0.6.0 \
+    docker run --rm --interactive koalaman/shellcheck:v0.7.0 \
       --external-sources \
       --exclude=SC1091 \
       /dev/stdin <"${file_path}"
