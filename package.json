@@ -2,6 +2,7 @@
   "author": "Peter Lyons <pete@reactioncommerce.com> (https://www.reactioncommerce.com)",
   "bin": {
     "cf-param-env": "./cf-param-env.py",
+    "docker-labels": "./docker-labels.sh",
     "docker-tags": "./docker-tags.sh",
     "install-helm": "./install-helm.sh",
     "install-kubectl": "./install-kubectl.sh",
