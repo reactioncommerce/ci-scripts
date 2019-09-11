@@ -21,7 +21,7 @@ jobs:
             # pin the current latest version explicitly
             # 1.2.0 for example only
             npm install --no-progress --no-package-lock @reactioncommerce/ci-scripts@1.2.0 >/dev/null
-            "$(npm bin)/lint-shell-scripts
+            "$(npm bin)/lint-shell-scripts"
 ```
 
 ## How to add new scripts
