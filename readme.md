@@ -9,19 +9,17 @@ In your `.circleci/config.yml`, in your appropriate job step, add a run command:
 
 ```yaml
 jobs:
-  my-lint-job-name:
+  lint:
     <<: *defaults
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
       - run:
           name: Run Lint Suite
           command: |
             # pin the current latest version explicitly
-            # 1.2.0 for example only
-            npm install --no-progress --no-package-lock @reactioncommerce/ci-scripts@1.2.0 >/dev/null
-            "$(npm bin)/lint-shell-scripts"
+            # 1.4.0 for example only
+            (cd /tmp && npm install --no-progress @reactioncommerce/ci-scripts@1.4.0 >/dev/null)
+            /tmp/node_modules/.bin/lint-shell-scripts
 ```
 
 ## How to add new scripts
@@ -36,4 +34,4 @@ jobs:
 - Scripts should operate on their current working directory (inherited from the parent process)
   - Meaning the calling code should `cd` into the root of their project git repository (which happens by default on circleci) then invoke the scripts from this repo
 - Scripts should enumerate files with `git ls-files`
-- Shell scripts should be formatted with `shfmt`
+- Shell scripts should be formatted with [shfmt](https://github.com/mvdan/sh)
