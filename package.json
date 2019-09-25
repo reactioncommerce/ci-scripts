@@ -1,6 +1,7 @@
 {
   "author": "Peter Lyons <pete@reactioncommerce.com> (https://www.reactioncommerce.com)",
   "bin": {
+    "build-metadata": "./build-metadata.sh",
     "cf-param-env": "./cf-param-env.py",
     "docker-labels": "./docker-labels.sh",
     "docker-tags": "./docker-tags.sh",
