@@ -15,11 +15,8 @@ jobs:
       - checkout
       - run:
           name: Run Lint Suite
-          command: |
-            # pin the current latest version explicitly
-            # 1.4.0 for example only
-            (cd /tmp && npm install --no-progress @reactioncommerce/ci-scripts@1.4.0 >/dev/null)
-            /tmp/node_modules/.bin/lint-shell-scripts
+          # pin the current latest version explicitly, 2.0.0 for example only
+          command: npx --quiet --package @reactioncommerce/ci-scripts@2.0.0 --command lint-shell-scripts
 ```
 
 ## How to add new scripts
