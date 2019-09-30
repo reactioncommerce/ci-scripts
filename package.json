@@ -1,9 +1,14 @@
 {
-  "author": "Peter Lyons <pete@reactioncommerce.com> (https://www.reactioncommerce.com)",
+  "author": {
+    "email": "engineering@reactioncommerce.com",
+    "name": "Reaction Commerce",
+    "url": "https://reactioncommerce.com"
+  },
   "bin": {
     "build-metadata": "./build-metadata.sh",
     "cf-param-env": "./cf-param-env.py",
     "docker-labels": "./docker-labels.sh",
+    "docker-build-tag-push": "./docker-build-tag-push.sh",
     "docker-tags": "./docker-tags.sh",
     "install-helm": "./install-helm.sh",
     "install-kubectl": "./install-kubectl.sh",
