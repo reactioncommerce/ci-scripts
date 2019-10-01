@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Run Lint Suite
           # pin the current latest version explicitly, 2.0.0 for example only
-          command: npx --quiet --package @reactioncommerce/ci-scripts@2.0.0 --command lint-shell-scripts
+          command: npx --quiet --package @reactioncommerce/ci-scripts@2.0.0 lint-shell-scripts
 ```
 
 ## How to add new scripts
