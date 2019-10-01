@@ -25,7 +25,7 @@ docker build -t "${push_to}:${git_hash}" "${dir}"
 
 ##### tag #####
 mkdir -p docker-cache
-"${ci_scripts_dir}/node_modules/.bin/docker-tags" "${git_hash}" "${git_branch}" |
+"${ci_scripts_dir}/docker-tags.sh" "${git_hash}" "${git_branch}" |
   sed 's/\//-/g' >"${tags_file}"
 xargs -t -I % docker tag "${push_to}:${git_hash}" "${push_to}:%" <"${tags_file}"
 
