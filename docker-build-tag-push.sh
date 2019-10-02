@@ -15,17 +15,17 @@ IFS=$'\n\t'
 
 dir="$1"
 push_to="$2"
-ci_scripts_dir="$(dirname "${BASH_SOURCE[0]}")"
 
 ##### build #####
 git_hash=$(git rev-parse HEAD)
 git_branch=$(git rev-parse --abbrev-ref HEAD)
-tags_file="docker-cache/docker-tags.txt"
 docker build -t "${push_to}:${git_hash}" "${dir}"
 
 ##### tag #####
+tags_file="docker-cache/docker-tags.txt"
+ci_scripts_dir="$(dirname "${BASH_SOURCE[0]}")"
 mkdir -p docker-cache
-"${ci_scripts_dir}/docker-tags.sh" "${git_hash}" "${git_branch}" |
+"${ci_scripts_dir}/docker-tags" "${git_hash}" "${git_branch}" |
   sed 's/\//-/g' >"${tags_file}"
 xargs -t -I % docker tag "${push_to}:${git_hash}" "${push_to}:%" <"${tags_file}"
 
