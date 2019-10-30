@@ -21,8 +21,8 @@ fi
 # Download hub
 cd "$(mktemp -d /tmp/hub-XXX)"
 wget -q "https://github.com/github/hub/releases/download/v""${HUB_VERSION}""/hub-linux-amd64-""${HUB_VERSION}"".tgz"
-tar xfz hub-linux-amd64-""${HUB_VERSION}"".tgz
-sudo mv hub-linux-amd64-""${HUB_VERSION}""/bin/hub /usr/local/bin/hub
+tar xfz hub-linux-amd64-"${HUB_VERSION}".tgz
+sudo mv hub-linux-amd64-"${HUB_VERSION}"/bin/hub /usr/local/bin/hub
 sudo chmod +x /usr/local/bin/hub
 echo '✓' installed "$(hub version)"
 
