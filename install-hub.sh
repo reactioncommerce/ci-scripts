@@ -14,7 +14,7 @@ IFS=$'\n\t'
 # ---- End unofficial bash strict mode boilerplate
 
 if [ -z "$HUB_VERSION" ]; then
-  echo "Please set the HUB_VERSION environment variable."
+  echo "Please set the HUB_VERSION environment variable"
   exit 1
 fi
 
