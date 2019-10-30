@@ -67,10 +67,10 @@ cd kustomize/${SERVICE}/overlays/"${ENVIRONMENT}"
 "${HUB}" add kustomization.yaml
 
 # Commit with sign-off
-"${HUB}" commit -s -m "changed "${SERVICE}" image tag to "${CIRCLE_SHA1}"
+"${HUB}" commit -s -m "changed ""${SERVICE}"" image tag to ""${CIRCLE_SHA1}""
 
 # Push branch to origin
-"${HUB}" push --set-upstream origin update-image-"${SERVICE}"-"${CIRCLE_SHA1}"
+"${HUB}" push --set-upstream origin update-image-""${SERVICE}""-"${CIRCLE_SHA1}"
 
 # Create PR
-"${HUB}" pull-request --no-edit -r "${REACTION_GITOPS_REVIEWERS}"
+"${HUB}" pull-request --no-edit -r ""${REACTION_GITOPS_REVIEWERS}"
