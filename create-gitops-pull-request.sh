@@ -57,7 +57,7 @@ HUB=/usr/local/bin/hub
 cd reaction-gitops
 "${HUB}" config user.name "${GH_USERNAME}"
 "${HUB}" config user.email "${GH_EMAIL}"
-cd kustomize/${SERVICE}/overlays/"${ENVIRONMENT}"
+cd kustomize/"${SERVICE}"/overlays/"${ENVIRONMENT}"
 
 # Create new branch
 "${HUB}" checkout -b update-image-"${SERVICE}"-"${CIRCLE_SHA1}"
@@ -70,7 +70,7 @@ cd kustomize/${SERVICE}/overlays/"${ENVIRONMENT}"
 "${HUB}" commit -s -m "changed ""${SERVICE}"" image tag to ""${CIRCLE_SHA1}""
 
 # Push branch to origin
-"${HUB}" push --set-upstream origin update-image-""${SERVICE}""-"${CIRCLE_SHA1}"
+"${HUB}" push --set-upstream origin update-image-""${SERVICE}""-""${CIRCLE_SHA1}""
 
 # Create PR
-"${HUB}" pull-request --no-edit -r ""${REACTION_GITOPS_REVIEWERS}"
+"${HUB}" pull-request --no-edit -r ""${REACTION_GITOPS_REVIEWERS}""
