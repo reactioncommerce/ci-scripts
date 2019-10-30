@@ -24,7 +24,7 @@ if [[ -n "${error}" ]]; then
   exit 1
 fi
 
-# Clone reaction-gitops repo and configure username and email for signing off commits
+# Clone reaction-gitops repository and configure username and email for signing off commits
 hub clone https://"${REACTION_GITOPS_GH_TOKEN}"@github.com/reactioncommerce/reaction-gitops.git
 cd reaction-gitops
 hub config user.name "${GH_USERNAME}"
