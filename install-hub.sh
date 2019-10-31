@@ -18,12 +18,12 @@ if [ -z $HUB_VERSION ]; then
   exit 1
 fi
 
+version="${HUB_VERSION:-2.12.8}"
+
 # Download hub
 cd "$(mktemp -d /tmp/hub-XXX)"
-wget -q "https://github.com/github/hub/releases/download/v${HUB_VERSION}/hub-linux-amd64-${HUB_VERSION}.tgz"
-tar xfz hub-linux-amd64-"${HUB_VERSION}".tgz
-sudo install --mode 755 hub-linux-amd64-"${HUB_VERSION}"/bin/hub /usr/local/bin/hub
+wget -q "https://github.com/github/hub/releases/download/v${version}/hub-linux-amd64-${version}.tgz"
+tar xfz hub-linux-amd64-"${version}".tgz
+sudo install --mode 755 hub-linux-amd64-"${version}"/bin/hub /usr/local/bin/hub
 echo '✓' installed "$(hub version)"
-
-
 
