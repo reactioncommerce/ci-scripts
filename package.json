@@ -17,7 +17,9 @@
     "lint-dockerfiles": "./lint-dockerfiles.sh",
     "lint-javascript": "./lint-javascript.sh",
     "lint-shell-scripts": "./lint-shell-scripts.sh",
-    "npm-audit": "./npm-audit.sh"
+    "install-kustomize": "./install-kustomize.sh",
+    "install-hub": "./install-hub.sh",
+    "create-gitops-pull-request": "./create-gitops-pull-request.sh"
   },
   "bugs": {
     "url": "https://github.com/reactioncommerce/ci-scripts/issues"
