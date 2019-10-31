@@ -13,7 +13,10 @@ set -o posix    # more strict failures in subshells
 IFS=$'\n\t'
 # ---- End unofficial bash strict mode boilerplate
 
-HUB_VERSION=2.12.8
+if [ -z $HUB_VERSION ]; then
+  echo Please set the HUB_VERSION environment variable.
+  exit 1
+fi
 
 # Download hub
 cd "$(mktemp -d /tmp/hub-XXX)"
