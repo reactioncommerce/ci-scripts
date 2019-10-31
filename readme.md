@@ -6,7 +6,6 @@ Scripts we use across many repositories during continuous integration.
 
 In your `.circleci/config.yml`, in your appropriate job step, add a run command:
 
-
 ```yaml
 jobs:
   lint:
