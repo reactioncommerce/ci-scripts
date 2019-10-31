@@ -13,10 +13,13 @@ set -o posix    # more strict failures in subshells
 IFS=$'\n\t'
 # ---- End unofficial bash strict mode boilerplate
 
-KUSTOMIZE_VERSION=3.2.1
+if [ -z "$KUSTOMIZE_VERSION" ]; then
+  echo "Please set the KUSTOMIZE_VERSION environment variable."
+  exit 1
+fi
 
 # Download kustomize
 cd "$(mktemp -d /tmp/kustomize-XXX)"
-wget -q "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v${KUSTOMIZE_VERSION}/kustomize_kustomize.v${KUSTOMIZE_VERSION}_linux_amd64"
-sudo install --mode 755 "kustomize_kustomize.v${KUSTOMIZE_VERSION}_linux_amd64" /usr/local/bin/kustomize
+wget -q "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v${KUSTOMIZE_VERSION:-3.2.1}/kustomize_kustomize.v${KUSTOMIZE_VERSION:-3.2.1}_linux_amd64"
+sudo install --mode 755 "kustomize_kustomize.v${KUSTOMIZE_VERSION:-3.2.1}_linux_amd64" /usr/local/bin/kustomize
 echo '✓' installed "$(kustomize version)"

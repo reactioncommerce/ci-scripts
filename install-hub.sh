@@ -13,13 +13,16 @@ set -o posix    # more strict failures in subshells
 IFS=$'\n\t'
 # ---- End unofficial bash strict mode boilerplate
 
-HUB_VERSION=2.12.8
+if [ -z "$HUB_VERSION" ]; then
+  echo "Please set the HUB_VERSION environment variable."
+  exit 1
+fi
 
 # Download hub
 cd "$(mktemp -d /tmp/hub-XXX)"
-wget -q "https://github.com/github/hub/releases/download/v${HUB_VERSION}/hub-linux-amd64-${HUB_VERSION}.tgz"
-tar xfz hub-linux-amd64-"${HUB_VERSION}".tgz
-sudo install --mode 755 hub-linux-amd64-"${HUB_VERSION}"/bin/hub /usr/local/bin/hub
+wget -q "https://github.com/github/hub/releases/download/v${HUB_VERSION:-2.12.8}/hub-linux-amd64-${HUB_VERSION:-2.12.8}.tgz"
+tar xfz hub-linux-amd64-"${HUB_VERSION:-2.12.8}".tgz
+sudo install --mode 755 hub-linux-amd64-"${HUB_VERSION:-2.12.8}"/bin/hub /usr/local/bin/hub
 echo '✓' installed "$(hub version)"
 
 
