@@ -13,10 +13,7 @@ set -o posix    # more strict failures in subshells
 IFS=$'\n\t'
 # ---- End unofficial bash strict mode boilerplate
 
-if [ -z "$KUSTOMIZE_VERSION" ]; then
-  echo "Please set the KUSTOMIZE_VERSION environment variable."
-  exit 1
-fi
+KUSTOMIZE_VERSION=3.2.1
 
 # Download kustomize
 cd "$(mktemp -d /tmp/kustomize-XXX)"
