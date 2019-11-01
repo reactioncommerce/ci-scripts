@@ -14,7 +14,7 @@ IFS=$'\n\t'
 # ---- End unofficial bash strict mode boilerplate
 
 error=""
-for VAR in SERVICE ENVIRONMENT DOCKER_REPOSITORY REACTION_GITOPS_GH_TOKEN GH_USERNAME GH_EMAIL REACTION_GITOPS_REVIEWERS; do
+for VAR in SERVICE ENVIRONMENT DOCKER_REPOSITORY GITHUB_TOKEN GH_USERNAME GH_EMAIL REACTION_GITOPS_REVIEWERS REACTION_GITOPS_ASSIGNEES REACTION_GITOPS_MILESTONE REACTION_GITOPS_LABELS; do
   if [[ -z "${!VAR}" ]]; then
     error="${error}Missing required environment variable: ${VAR}\n"
   fi
@@ -25,7 +25,7 @@ if [[ -n "${error}" ]]; then
 fi
 
 # Clone reaction-gitops repository and configure username and email for signing off commits
-hub clone https://"${REACTION_GITOPS_GH_TOKEN}"@github.com/reactioncommerce/reaction-gitops.git
+hub clone https://"${GITHUB_TOKEN}"@github.com/reactioncommerce/reaction-gitops.git
 cd reaction-gitops
 hub config user.name "${GH_USERNAME}"
 hub config user.email "${GH_EMAIL}"
@@ -45,4 +45,5 @@ hub commit -s -m "changed ${SERVICE} image tag to ${CIRCLE_SHA1}"
 hub push --set-upstream origin update-image-"${SERVICE}"-"${CIRCLE_SHA1}"
 
 # Create PR
-hub pull-request --no-edit -r "${REACTION_GITOPS_REVIEWERS}"
+hub pull-request --no-edit -r "${REACTION_GITOPS_REVIEWERS}" -a "${REACTION_GITOPS_ASSIGNEES}" -M "${REACTION_GITOPS_MILESTONE}" -l "${REACTION_GITOPS_LABELS}"
+
