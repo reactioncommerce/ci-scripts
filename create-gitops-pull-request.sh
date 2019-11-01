@@ -39,7 +39,7 @@ kustomize edit set image docker.io/"${DOCKER_REPOSITORY}":"${CIRCLE_SHA1}"
 hub add kustomization.yaml
 
 # Commit with sign-off
-hub commit -s -m "changed ""${SERVICE}""" image tag to "${CIRCLE_SHA1}"
+hub commit -s -m "changed ${SERVICE} image tag to ${CIRCLE_SHA1}"
 
 # Push branch to origin
 hub push --set-upstream origin update-image-"${SERVICE}"-"${CIRCLE_SHA1}"
