@@ -12,11 +12,15 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
           name: Run Lint Suite
-          # pin the current latest version explicitly, 1.7.0 for example only
-          command: npx --quiet --package @reactioncommerce/ci-scripts@1.7.0 lint-shell-scripts
+          # pin the current latest version explicitly, 1.8.4 for example only
+          command: npx --quiet --package @reactioncommerce/ci-scripts@1.8.4 lint-shell-scripts
 ```
+
+**Note:** Most `docker-*` scripts as well as `lint-dockerfiles` require the `setup_remote_docker` circleci job step as a prerequisite. Be sure your `config.yml` has that when it's needed.
 
 If you run a bunch of these and want to DRY it up, try this flavor with an environment variable:
 
@@ -28,7 +32,7 @@ defaults: &defaults
   docker:
     - image: circleci/node:12-stretch
   environment:
-    CI_SCRIPTS: 'npx --quiet --package @reactioncommerce/ci-scripts@1.7.0'
+    CI_SCRIPTS: 'npx --quiet --package @reactioncommerce/ci-scripts@1.8.4'
 jobs:
   docker-build-tag-push:
     <<: *defaults
@@ -49,7 +53,7 @@ jobs:
 - Put your script file in the repo root. Use a filename extension. It makes editor syntax highlighting and linting "just work" sometimes.
 - `chmod 755 your-script.sh`
 - Add an entry to the `package.json` `"bin"` property mapping `"name-without-extension": "./name-with-extension.sh",`
-- Commit with semantic release `feat:` message
+- Commit, being sure to prefix your commit message with `feat: ` so semantic release publishes a new minor version properly
 
 ## How to troubleshoot script errors
 
