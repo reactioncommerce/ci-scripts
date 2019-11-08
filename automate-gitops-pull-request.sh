@@ -24,14 +24,16 @@ if [[ -n "${error}" ]]; then
   exit 1
 fi
 
+ci_scripts_dir="$(dirname "${BASH_SOURCE[0]}")"
+
 # Install Kustomize
-./install-kustomize.sh
+ci_scripts_dir/install-kustomize.sh
 
 # Install Hub
-./install-hub.sh
+ci_scripts_dir/install-hub.sh
 
 # Clone reaction-gitops repository and configure username and email for signing off commits
-hub clone https://"${GITHUB_TOKEN}"@github.com/reactioncommerce/reaction-gitops.git
+hub clone "https://${GITHUB_TOKEN}@github.com/reactioncommerce/reaction-gitops.git"
 cd reaction-gitops
 hub config user.name "${GH_USERNAME}"
 hub config user.email "${GH_EMAIL}"
@@ -52,4 +54,6 @@ hub push --set-upstream origin update-image-"${SERVICE}"-"${CIRCLE_SHA1}"
 
 # Create PR
 hub pull-request --no-edit -r "${REACTION_GITOPS_REVIEWERS}"
+
+
 
