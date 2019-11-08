@@ -27,10 +27,10 @@ fi
 ci_scripts_dir="$(dirname "${BASH_SOURCE[0]}")"
 
 # Install Kustomize
-ci_scripts_dir/install-kustomize.sh
+"${ci_scripts_dir}"/install-kustomize.sh
 
 # Install Hub
-ci_scripts_dir/install-hub.sh
+"${ci_scripts_dir}"/install-hub.sh
 
 # Clone reaction-gitops repository and configure username and email for signing off commits
 hub clone "https://${GITHUB_TOKEN}@github.com/reactioncommerce/reaction-gitops.git"
