@@ -54,6 +54,12 @@ jobs:
 - `chmod 755 your-script.sh`
 - Add an entry to the `package.json` `"bin"` property mapping `"name-without-extension": "./name-with-extension.sh",`
 - Commit, being sure to prefix your commit message with `feat: ` so semantic release publishes a new minor version properly
+- Notes on filename extensions vs no extensions
+  - In the `package.json` `bin` keys, we omit the extension. This is slightly nicer as a command line interface. It's just a logical script name.
+  - When launching via `npx` on the command line during CI, it's **no extension**
+  - In the repo root dir, we **do** use the extension since this is nicer for editor syntax detection, development tools, etc.
+  - So in `package.json` `bin` it's **no extension** for the key but **yes extension** for the value
+  - When calling one ci-script from another ci-script it's **no extension** because these run from the `node_modules/.bin` directory which only contains no-extension files which npm picks up from `package.json` `bin` key.
 
 ## How to troubleshoot script errors
 
@@ -71,3 +77,8 @@ jobs:
   - Meaning the calling code should `cd` into the root of their project git repository (which happens by default on circleci) then invoke the scripts from this repo
 - Scripts should enumerate files with `git ls-files`
 - Shell scripts should be formatted with [shfmt](https://github.com/mvdan/sh)
+- If you need to call another ci-script from your own ci-script, use this pattern
+  1. Make a variable for the directory the script lives in, which is `node_modules/.bin` when running via npx
+    - `ci_scripts_dir="$(dirname "${BASH_SOURCE[0]}")"`
+  2. Reference sibling scripts with no extension
+    - `./some-other-script`
