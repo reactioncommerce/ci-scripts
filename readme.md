@@ -82,3 +82,4 @@ jobs:
     - `ci_scripts_dir="$(dirname "${BASH_SOURCE[0]}")"`
   2. Reference sibling scripts with no extension
     - `./some-other-script`
+    
