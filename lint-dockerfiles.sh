@@ -13,7 +13,7 @@ set -o posix    # more strict failures in subshells
 IFS="$(printf "\n\t")"
 # ---- End unofficial bash strict mode boilerplate
 
-git ls-files | grep -E '(^|/)Dockerfile' || true | {
+git ls-files | (grep -E '(^|/)Dockerfile' || true) | {
   while IFS= read -r file_path; do
     echo -n "hadolint ${file_path} "
     docker run --rm --interactive hadolint/hadolint:v1.16.3 hadolint /dev/stdin <"${file_path}"
