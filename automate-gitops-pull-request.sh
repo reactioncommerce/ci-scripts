@@ -33,7 +33,7 @@ ci_scripts_dir="$(dirname "${BASH_SOURCE[0]}")"
 "${ci_scripts_dir}/install-hub"
 
 # Clone reaction-gitops repository and configure username and email for signing off commits
-cd "$(mktemp -d "/tmp/$0-XXX")"
+cd "$(mktemp -d "/tmp/gitops-XXX")"
 hub clone "https://${GITHUB_TOKEN}@github.com/reactioncommerce/reaction-gitops.git"
 cd reaction-gitops
 hub config user.name "${GH_USERNAME}"
