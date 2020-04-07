@@ -17,6 +17,7 @@
     "lint-dockerfiles": "./lint-dockerfiles.sh",
     "lint-javascript": "./lint-javascript.sh",
     "lint-shell-scripts": "./lint-shell-scripts.sh",
+    "lint-sops": "./lint-sops.sh",
     "install-kustomize": "./install-kustomize.sh",
     "install-hub": "./install-hub.sh",
     "automate-gitops-pull-request": "./automate-gitops-pull-request.sh"
