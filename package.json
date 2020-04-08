@@ -43,7 +43,7 @@
     "access": "public"
   },
   "release": {
-    "branch": "trunk"
+    "branches": ["trunk"]
   },
   "repository": {
     "type": "git",
