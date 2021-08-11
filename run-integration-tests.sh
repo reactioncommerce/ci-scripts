@@ -23,6 +23,6 @@ npm ci
 # Link the package inside node_modules
 sudo npm link ../project
 
-# Run integration tests for query
-npm run test:integration:query
+# Run integration tests
+npm run test
 
