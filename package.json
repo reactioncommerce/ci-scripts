@@ -20,7 +20,8 @@
     "lint-sops": "./lint-sops.sh",
     "install-kustomize": "./install-kustomize.sh",
     "install-hub": "./install-hub.sh",
-    "automate-gitops-pull-request": "./automate-gitops-pull-request.sh"
+    "automate-gitops-pull-request": "./automate-gitops-pull-request.sh",
+    "run-integration-tests": "./run-integration-tests.sh"
   },
   "bugs": {
     "url": "https://github.com/reactioncommerce/ci-scripts/issues"
