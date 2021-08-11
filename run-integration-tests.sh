@@ -14,10 +14,11 @@ IFS=$'\n\t'
 # ---- End unofficial bash strict mode boilerplate
 
 # Clone the reactio repository
-git clone https://github.com/reactioncommerce/reaction.git ../
+cd ..
+git clone https://github.com/reactioncommerce/reaction.git
 
 # Run npm install in the repository
-cd ../reaction 
+cd reaction
 npm ci
 
 # Link the package inside node_modules
